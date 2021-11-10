@@ -12,6 +12,7 @@
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.1.0",
     "@mui/material": "^5.1.0",
+    "axios": "^0.24.0",
     "firebase": "^8.10.0",
     "next": "12.0.3",
     "object-dig": "^0.1.3",
