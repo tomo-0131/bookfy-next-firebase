@@ -2,6 +2,10 @@
 	font-family: sans-serif;
 	text-align: center;
 }
+#movieButton {
+	text-decoration: none;
+}
+
 #overlay {
 	/*　画面全体を覆う設定　*/
 	position: fixed;
@@ -40,4 +44,66 @@
 
 #cardContents {
 	text-align: center;
+}
+
+/*********** footerDetail ***********/
+.footer-detail-container {
+	position: absolute; /*←絶対位置*/
+	bottom: 0; /*下に固定*/
+	background-color: #e3e3e3;
+	height: auto;
+	width: 100%;
+}
+.footer-detail-container--inner {
+	width: 100%;
+}
+.footer-detail-top--inner {
+	padding: 0 0 0 0;
+}
+.footer-detail-middle--inner {
+	padding: 0px 0px 30px 0px;
+}
+.copy-detail {
+	color: #b4b4b4;
+	font-size: 11px;
+	padding-top: 20px;
+}
+.footer-detail-menu-text {
+	font-size: 11px;
+	letter-spacing: 0.125rem;
+	line-height: 1.7;
+	text-decoration: none;
+	color: grey;
+}
+.footer-detail-menu-text > a {
+	display: inline-block;
+	text-decoration: none;
+	color: grey;
+	padding: 10px 10px 0px 0px;
+}
+
+/*********** Responsive ***********/
+@media screen and (min-width: 576px) {
+	.footer-container--inner {
+		width: 100%;
+		padding: 0;
+	}
+}
+@media screen and (min-width: 1024px) {
+	.footer-detail-container {
+		background-color: black;
+	}
+	.footer-detail-container--inner {
+		width: 100%;
+	}
+	.copy-detail {
+		color: white;
+		width: 100%;
+	}
+	.footer-detail-menu-text {
+		color: white;
+	}
+	.footer-detail-menu-text > a {
+		color: white;
+	}
 }

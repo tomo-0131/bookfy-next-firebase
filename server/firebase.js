@@ -33,7 +33,7 @@ export const logOut = () => {
   firebase.auth().signOut()
   .then((res) => {
     console.log("ログアウト完了")
-    document.location.reload();
+    location.href = '/'
   }).catch((error) => {
     console.error(error.message)
   })

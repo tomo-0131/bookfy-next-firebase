@@ -34,26 +34,19 @@ import { AuthContext } from "/providers/AuthProvider";
 import { logOut, signInWithGoogle } from "/server/firebase";
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
+import { TheFooter } from "../components/TheFooter"
+import Link from 'next/link'
+import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
+import movie from './movie'
+import { TheHeader } from '../components/TheHeader'
 
 export default function App() {
-
   // const [movies, setMovies] = useState([]);
   const [ books, setBooks ] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage ] = useState('');
   const [searchText, setSearchText] = useState("")
   const currentUser = useContext(AuthContext);
-
-  // ログイン・ログアウト表示
-  const buttonRender = () => {
-    let buttonDom
-    if( dig(currentUser, 'currentUser', 'uid') ) {
-      buttonDom = <Button  style={{ color: 'white' }} startIcon={<LogoutIcon />} onClick={logOut}>LOGOUT</Button>
-    } else {
-      buttonDom = <Button  style={{ color: 'white' }} startIcon={<LoginIcon />} onClick={signInWithGoogle}>LOGIN</Button>
-    }
-    return buttonDom
-  }
 
   const bookRender = () => {
     let bookDom
@@ -107,25 +100,7 @@ export default function App() {
   return (
     <>
     <AuthProvider>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="info">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              BOOKIFY
-            </Typography>
-            <div>{ buttonRender() }</div>
-          </Toolbar>
-        </AppBar>
-      </Box>
+      <TheHeader />
       {bookRender()}
     </AuthProvider>
     </>
