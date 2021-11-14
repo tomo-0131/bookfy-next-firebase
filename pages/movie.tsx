@@ -3,44 +3,46 @@ import type { FC } from 'react'
 import { TheHeader } from "../components/TheHeader";
 import { InputMovieValue } from "../components/InputMovieValue";
 
-import CancelIcon from '@mui/icons-material/Cancel';
-import SearchIcon from '@mui/icons-material/Search';
-import CardContent from '@mui/material/CardContent';
+import { MovieList } from "../components/MovieList";
 
 import axios from "axios";
 
-interface ValueState {
-  searchValue: string;
-  setSearchValue: string
-}
-
 const Movie: FC = () => {
 
-  const [ searchValue, setSearchValue ] = useState('');
   const [ movies, setMovies ] = useState([]);
+  const [ errorMessage, setErrorMessage ] = useState('');
+  const [ isLoading, setIsLoading ] = useState(false)
 
-  const handleInputChange = (e: any): void => {
-    setSearchValue(e.target.value);
-  }
-
-  const resetInput= (): void => {
-    setSearchValue('')
-  }
-
-  const searchMovie: any = (searchValue): void => {
-    const url = `https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522?applicationId=1086884900424216159&title=${searchValue}&format=json`
-
+  const searchMovie: any = (searchValue) => {
+    setErrorMessage(null)
+    setIsLoading(true)
+    const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=ea6f1704`
     axios.get(url)
     .then((res) => {
-      console.log(res.data.Items);
-
+      if(res.data) {
+        console.log(res.data);
+        setMovies(res.data.Search);
+        setIsLoading(false)
+      } else {
+        setErrorMessage("エラーが発生しました")
+        setIsLoading(false)
+      }
+    }).catch(err=> {
+      console.error(err)
     })
   }
 
   return (
     <div>
       <TheHeader />
-      <InputMovieValue resetInput={resetInput} searchMovie={searchMovie} handleInputChange={handleInputChange} />
+      <InputMovieValue searchMovie={searchMovie} />
+      { isLoading && !errorMessage ? ( <p>Loading...</p> )
+        : errorMessage ? ( <p>{errorMessage}</p> )
+        : ( movies.map((movie) => (
+            <MovieList key={movie.imdbID} movie={movie} />
+          ))
+        )
+      }
     </div>
   )
 }

@@ -1,43 +1,12 @@
 import { useContext, useState } from "react";
 import axios from 'axios';
-import Button from '@mui/material/Button';
-import Input from '@mui/material/Input';
 import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import DirectionsIcon from '@mui/icons-material/Directions';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import { DescriptionModal } from '/components/DescriptionModal'
 import { InputText } from "/components/InputText";
 // import { MovieList } from "./components/MovieList";
 import { BookList } from "../components/BookList";
 import dig from  "object-dig"
 import { AuthProvider } from "/providers/AuthProvider";
 import { AuthContext } from "/providers/AuthProvider";
-import { logOut, signInWithGoogle } from "/server/firebase";
-import LogoutIcon from '@mui/icons-material/Logout';
-import LoginIcon from '@mui/icons-material/Login';
-import { TheFooter } from "../components/TheFooter"
-import Link from 'next/link'
-import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
-import movie from './movie'
 import { TheHeader } from '../components/TheHeader'
 
 export default function App() {
