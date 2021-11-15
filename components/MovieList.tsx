@@ -6,10 +6,6 @@ export const MovieList = ({movie}) => {
 
   const defaultMoviePoster = "https://m.media-amazon.com/images/M/MV5BYmJmNzU0NTgtOGM5Ni00MWJiLTgwZmMtNDIyNjYzZDAzNzI5XkEyXkFqcGdeQXVyMjExMjk0ODk@._V1_SX300.jpg"
 
-  const renderImage = () => {
-
-  }
-
   return (
     <>
       <Grid container>
